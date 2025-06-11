@@ -1,9 +1,12 @@
 // src/components/sections/ScheduleSection.tsx
+"use client"
 import { CalendarDaysIcon } from 'lucide-react'
 import { FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import { EventItem } from '@/lib/types'
+import { useState } from 'react'
+import { ImagePreviewModal } from '@/components/ui/image-preview-modal'
 
 interface ScheduleSectionProps {
   events: EventItem[]
@@ -11,8 +14,7 @@ interface ScheduleSectionProps {
 }
 
 export default function ScheduleSection({ events, id }: ScheduleSectionProps) {
-  // Mock data - replace with your actual data
-  
+  const [previewImage, setPreviewImage] = useState<{ url: string; title: string } | null>(null)
 
   // Group events by date
   const eventsByDate: Record<string, EventItem[]> = {}
@@ -73,6 +75,16 @@ export default function ScheduleSection({ events, id }: ScheduleSectionProps) {
                         {event.location && <p>{event.location}</p>}
                       </div>
                     </div>
+                    <div className="w-32 rounded-lg flex-shrink-0">
+                      {event.image && (
+                        <img 
+                          src={event.image} 
+                          alt={event.title} 
+                          className="w-full h-full rounded-lg object-cover cursor-pointer hover:opacity-90 transition-opacity"
+                          onClick={() => event.image && setPreviewImage({ url: event.image, title: event.title })}
+                        />
+                      )}
+                    </div>
                   </div>
                 </div>
               ))}
@@ -88,6 +100,14 @@ export default function ScheduleSection({ events, id }: ScheduleSectionProps) {
           </div>
         </div>
       </div>
+
+      {/* Image Preview Modal */}
+      <ImagePreviewModal
+        isOpen={!!previewImage}
+        onClose={() => setPreviewImage(null)}
+        imageUrl={previewImage?.url || ''}
+        title={previewImage?.title || ''}
+      />
     </section>
   )
 }

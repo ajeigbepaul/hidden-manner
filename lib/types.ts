@@ -98,4 +98,5 @@ export interface EventItem {
   description: string
   time?: string
   location?: string
+  image?: string
 }

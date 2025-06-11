@@ -6,9 +6,11 @@ import { Button } from '@/components/ui/button'
 import { useState } from 'react'
 import { FaBars, FaTimes } from 'react-icons/fa'
 import { Menu } from '../ui/Menu'
+import { usePathname } from 'next/navigation'
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const pathname = usePathname()
 
   // Navigation data
   const locations = [
@@ -17,19 +19,22 @@ export default function Header() {
     { title: 'Westside', href: '/locations/westside' },
   ]
 
-  const ministries = [
-    { title: 'Children', href: '/ministries/children' },
-    { title: 'Youth', href: '/ministries/youth' },
-    { title: 'Women', href: '/ministries/women' },
-    { title: 'Men', href: '/ministries/men' },
-  ]
+  // const ministries = [
+  //   { title: 'Children', href: '/ministries/children' },
+  //   { title: 'Youth', href: '/ministries/youth' },
+  //   { title: 'Women', href: '/ministries/women' },
+  //   { title: 'Men', href: '/ministries/men' },
+  // ]
 
-  const navLinks = [
+  const 
+  navLinks = [
     { title: 'About', href: '/about' },
     // { title: 'Beliefs', href: '/beliefs' },
     // { title: 'Sermons', href: '/sermons' },
     // { title: 'Events', href: '/events' },
     { title: 'Give', href: '/give' },
+    {title:'Ministries', href:'/ministries'},
+    {title:'Contact', href:'/contact'}
   ]
 
   return (
@@ -47,13 +52,17 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-gray-700 hover:text-primary transition"
+                className={`px-3 py-2 rounded-md transition ${
+                  pathname === link.href
+                    ? 'bg-primary/10 text-primary font-medium'
+                    : 'text-gray-700 hover:text-primary hover:bg-primary/5'
+                }`}
               >
                 {link.title}
               </Link>
             ))}
-            <Menu title="Locations" items={locations} />
-            <Menu title="Ministries" items={ministries} />
+            {/* <Menu title="Locations" items={locations} />
+            <Menu title="Ministries" items={ministries} /> */}
           </nav>
 
           {/* Auth Buttons - Desktop */}
@@ -82,7 +91,7 @@ export default function Header() {
           <div className="container mx-auto px-4 py-4">
             <div className="flex justify-between items-center mb-8">
               <Link href="/" className="text-2xl font-bold text-primary">
-                Church Name
+                Hidden Manna
               </Link>
               <button
                 className="p-2 text-gray-700"
@@ -97,44 +106,39 @@ export default function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-xl py-2 border-b border-gray-100"
+                  className={`text-xl py-2 px-3 rounded-md transition ${
+                    pathname === link.href
+                      ? 'bg-primary/10 text-primary font-medium'
+                      : 'text-gray-700 hover:text-primary hover:bg-primary/5'
+                  }`}
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {link.title}
                 </Link>
               ))}
 
-              <div className="py-2 border-b border-gray-100">
-                <h3 className="text-xl font-medium mb-2">Locations</h3>
-                <div className="flex flex-col space-y-2 pl-4">
-                  {locations.map((location) => (
-                    <Link
-                      key={location.href}
-                      href={location.href}
-                      className="text-gray-600 hover:text-primary"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      {location.title}
-                    </Link>
-                  ))}
-                </div>
-              </div>
+              
+              
 
-              <div className="py-2 border-b border-gray-100">
-                <h3 className="text-xl font-medium mb-2">Ministries</h3>
-                <div className="flex flex-col space-y-2 pl-4">
+              {/* <div className="py-2">
+                <h3 className="text-xl font-medium mb-2 px-3">Ministries</h3>
+                <div className="flex flex-col space-y-2">
                   {ministries.map((ministry) => (
                     <Link
                       key={ministry.href}
                       href={ministry.href}
-                      className="text-gray-600 hover:text-primary"
+                      className={`px-6 py-2 rounded-md transition ${
+                        pathname === ministry.href
+                          ? 'bg-primary/10 text-primary font-medium'
+                          : 'text-gray-600 hover:text-primary hover:bg-primary/5'
+                      }`}
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       {ministry.title}
                     </Link>
                   ))}
                 </div>
-              </div>
+              </div> */}
             </nav>
 
             <div className="mt-8 flex flex-col space-y-4">

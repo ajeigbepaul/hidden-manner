@@ -5,7 +5,8 @@ export const events = [
       title: 'RETREAT',
       description: 'Students Camp',
       time: '9:00 AM - 4:00 PM',
-      location: 'Main Campus'
+      location: 'Main Campus',
+      image: '/gal1.jpg'
     },
     {
       id: '2',
@@ -13,7 +14,8 @@ export const events = [
       title: 'EVENT',
       description: 'Students Citywide Worship',
       time: '7:00 PM - 9:00 PM',
-      location: 'Downtown Campus'
+      location: 'Downtown Campus',
+      image: '/gal2.jpg'
     },
     {
       id: '3',
@@ -21,6 +23,7 @@ export const events = [
       title: 'BIBLE STUDY',
       description: 'Summer Series: Gospel of John',
       time: '7:00 PM - 8:30 PM',
-      location: 'Fellowship Hall'
+      location: 'Fellowship Hall',
+      image: '/gal3.jpg'
     }
   ]
