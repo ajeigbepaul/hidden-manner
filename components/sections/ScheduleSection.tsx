@@ -63,8 +63,8 @@ export default function ScheduleSection({ events, id }: ScheduleSectionProps) {
             <div className="space-y-6">
               {events.map(event => (
                 <div key={event.id} className="border-b border-gray-200 pb-6 last:border-0">
-                  <div className="flex items-start">
-                    <div className="w-24 flex-shrink-0">
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    <div className="w-full sm:w-24 flex-shrink-0">
                       <p className="font-bold text-gray-900">{event.date}</p>
                     </div>
                     <div className="flex-grow">
@@ -75,16 +75,16 @@ export default function ScheduleSection({ events, id }: ScheduleSectionProps) {
                         {event.location && <p>{event.location}</p>}
                       </div>
                     </div>
-                    <div className="w-32 rounded-lg flex-shrink-0">
-                      {event.image && (
+                    {event.image && (
+                      <div className="w-full sm:w-32 h-48 sm:h-32 rounded-lg flex-shrink-0 overflow-hidden">
                         <img 
                           src={event.image} 
                           alt={event.title} 
                           className="w-full h-full rounded-lg object-cover cursor-pointer hover:opacity-90 transition-opacity"
                           onClick={() => event.image && setPreviewImage({ url: event.image, title: event.title })}
                         />
-                      )}
-                    </div>
+                      </div>
+                    )}
                   </div>
                 </div>
               ))}
