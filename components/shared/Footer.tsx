@@ -7,25 +7,25 @@ export default function Footer() {
   return (
     <footer className="bg-gray-800 text-white py-12">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div>
-            <h3 className="text-xl font-bold mb-4">Church Name</h3>
-            <p className="text-gray-300">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className='w-[50%]'>
+            <h3 className="text-xl font-bold mb-4">Hidden Manner Ministries</h3>
+            <p className="text-gray-300 text-md">
               Bringing hope and transformation to our community through the Gospel.
             </p>
           </div>
           
-          <div>
+          <div className='w-[25%]'>
             <h4 className="font-bold mb-4">Quick Links</h4>
             <ul className="space-y-2">
               <li><Link href="/about" className="text-gray-300 hover:text-white">About Us</Link></li>
-              <li><Link href="/beliefs" className="text-gray-300 hover:text-white">Our Beliefs</Link></li>
-              <li><Link href="/sermons" className="text-gray-300 hover:text-white">Sermons</Link></li>
-              <li><Link href="/events" className="text-gray-300 hover:text-white">Events</Link></li>
+              <li><Link href="/ministries" className="text-gray-300 hover:text-white">Ministries</Link></li>
+              {/* <li><Link href="/sermons" className="text-gray-300 hover:text-white">Sermons</Link></li>
+              <li><Link href="/events" className="text-gray-300 hover:text-white">Events</Link></li> */}
             </ul>
           </div>
           
-          <div>
+          {/* <div>
             <h4 className="font-bold mb-4">Ministries</h4>
             <ul className="space-y-2">
               <li><Link href="/ministries/kids" className="text-gray-300 hover:text-white">Kids</Link></li>
@@ -33,23 +33,23 @@ export default function Footer() {
               <li><Link href="/ministries/women" className="text-gray-300 hover:text-white">Women</Link></li>
               <li><Link href="/ministries/men" className="text-gray-300 hover:text-white">Men</Link></li>
             </ul>
-          </div>
+          </div> */}
           
-          <div>
+          <div className='w-[25%]'>
             <h4 className="font-bold mb-4">Connect</h4>
             <div className="flex space-x-4 mb-4">
-              <a href="#" className="text-gray-300 hover:text-white"><FaFacebook size={20} /></a>
-              <a href="#" className="text-gray-300 hover:text-white"><FaInstagram size={20} /></a>
-              <a href="#" className="text-gray-300 hover:text-white"><FaYoutube size={20} /></a>
-              <a href="#" className="text-gray-300 hover:text-white"><FaTwitter size={20} /></a>
+              <a href="https://www.facebook.com/search/top?q=the%20hidden%20manna%20ministries" target='_blank' className="text-gray-300 hover:text-white"><FaFacebook size={20} /></a>
+              <a href="https://www.instagram.com/mannabiblechurch?igsh=anBqZjlrY2lxenIw" target='_blank' className="text-gray-300 hover:text-white"><FaInstagram size={20} /></a>
+              <a href="https://www.youtube.com/@thehiddenmannaministries" target='_blank' className="text-gray-300 hover:text-white"><FaYoutube size={20} /></a>
+              <a href="https://x.com/manabiblechurch?t=VijUL7oE-d5-oECocKGAXw&s=08" target='_blank' className="text-gray-300 hover:text-white"><FaTwitter size={20} /></a>
             </div>
-            <p className="text-gray-300">contact@church.org</p>
+            <p className="text-gray-300">thehiddenmannaministries@gmail.com</p>
             <p className="text-gray-300">(123) 456-7890</p>
           </div>
         </div>
         
         <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-          <p>© {currentYear} Church Name. All rights reserved.</p>
+          <p>© {currentYear} Hidden Manner Ministries. All rights reserved.</p>
         </div>
       </div>
     </footer>

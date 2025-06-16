@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { FaUsers, FaHandHoldingHeart, FaMusic, FaBook, FaPray, FaChild } from 'react-icons/fa'
 
 interface Ministry {
@@ -42,7 +43,7 @@ const ministries: Ministry[] = [
 export default function MinistriesPage() {
   return (
     <main className="min-h-screen bg-gray-50 py-16">
-      <div className="max-w-6xl mx-auto px-4">
+      <div className="max-w-5xl mx-auto px-4">
         {/* Header Section */}
         <div className="text-center mb-16">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">Our Ministries</h1>
@@ -52,7 +53,7 @@ export default function MinistriesPage() {
         </div>
 
         {/* Ministries Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 gap-8">
           {ministries.map((ministry, index) => (
             <div 
               key={index}
@@ -80,9 +81,9 @@ export default function MinistriesPage() {
           <p className="text-gray-600 mb-6 text-sm">
             We welcome everyone to join our ministries and serve in the church. Contact us to learn more about how you can participate.
           </p>
-          <button className="bg-primary text-white py-3 px-8 rounded-lg hover:bg-primary/90 transition-colors duration-300">
+          <Link href={"/contact"} className="bg-primary text-white py-3 px-8 rounded-lg hover:bg-primary/90 transition-colors duration-300">
             Contact Us
-          </button>
+          </Link>
         </div>
       </div>
     </main>

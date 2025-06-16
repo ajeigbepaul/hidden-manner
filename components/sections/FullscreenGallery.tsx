@@ -13,14 +13,16 @@ import 'swiper/css'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const images = [
-  { src: '/gal1.jpg', alt: 'Worship service' },
-  { src: '/gal2.jpg', alt: 'Community gathering' },
-  { src: '/gal3.jpg', alt: 'Youth event' },
-  { src: '/gal1.jpg', alt: 'Community outreach' },
-]
+interface FullscreenGalleryProps {
+  id?: string;
+  images: {
+    image: string;
+    alt: string;
+    title?: string;
+  }[];
+}
 
-export default function FullscreenGallery({ id }: { id?: string }) {
+export default function FullscreenGallery({ id, images }: FullscreenGalleryProps) {
   const sectionRef = useRef<HTMLElement>(null)
   const titleRef = useRef<HTMLHeadingElement>(null)
 
@@ -104,7 +106,7 @@ export default function FullscreenGallery({ id }: { id?: string }) {
             <SwiperSlide key={index} className="!w-[400px] h-full">
               <div className="h-full w-full relative rounded-xl overflow-hidden">
                 <Image
-                  src={image.src}
+                  src={image.image}
                   alt={image.alt}
                   fill
                   className="object-cover"
@@ -112,7 +114,7 @@ export default function FullscreenGallery({ id }: { id?: string }) {
                 />
                 <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
                   <h2 ref={titleRef} className="text-white text-3xl font-bold text-center px-4">
-                    {image.alt.toUpperCase()}
+                    {image.title || image.alt.toUpperCase()}
                   </h2>
                 </div>
               </div>

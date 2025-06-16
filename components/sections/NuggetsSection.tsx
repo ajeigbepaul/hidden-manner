@@ -178,7 +178,7 @@ export default function NuggetsSection({ nuggets, id }: NuggetsSectionProps) {
             ))}
           </div>
         </div>
-        
+{/*         
         <div className="text-center mt-8">
           <button 
             className="px-8 py-3 bg-white/20 text-white rounded-full hover:bg-white/30 transition-all duration-300 shadow-lg hover:shadow-xl focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-indigo-900"
@@ -186,7 +186,7 @@ export default function NuggetsSection({ nuggets, id }: NuggetsSectionProps) {
           >
             View All Nuggets
           </button>
-        </div>
+        </div> */}
       </div>
     </section>
   );

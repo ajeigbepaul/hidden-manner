@@ -43,7 +43,7 @@ export default function Header() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="text-2xl font-bold text-primary">
-           Hidden Manna
+           Hidden Minna Ministries
           </Link>
 
           {/* Desktop Navigation */}
@@ -66,14 +66,14 @@ export default function Header() {
           </nav>
 
           {/* Auth Buttons - Desktop */}
-          <div className="hidden md:flex items-center space-x-4">
-            {/* <Button variant="outline" asChild>
+          {/* <div className="hidden md:flex items-center space-x-4">
+            <Button variant="outline" asChild>
               <Link href="/login">Login</Link>
-            </Button> */}
+            </Button>
             <Button asChild>
               <Link href="/register">Join Us</Link>
             </Button>
-          </div>
+          </div> */}
 
           {/* Mobile Menu Button */}
           <button
@@ -141,18 +141,18 @@ export default function Header() {
               </div> */}
             </nav>
 
-            <div className="mt-8 flex flex-col space-y-4">
+            {/* <div className="mt-8 flex flex-col space-y-4">
               <Button asChild>
                 <Link href="/register" onClick={() => setMobileMenuOpen(false)}>
                   Join Us
                 </Link>
               </Button>
-              {/* <Button variant="outline" asChild>
+              <Button variant="outline" asChild>
                 <Link href="/login" onClick={() => setMobileMenuOpen(false)}>
                   Login
                 </Link>
-              </Button> */}
-            </div>
+              </Button>
+            </div> */}
           </div>
         </div>
       )}

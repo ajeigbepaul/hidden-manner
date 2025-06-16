@@ -16,10 +16,10 @@ export default function MinistriesSection({ ministries, id }: MinistriesSectionP
 
   return (
     <section id={id} className="py-12 bg-gray-50">
-      <div className="container mx-auto px-4">
+      <div className="max-w-6xl mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-8">Our Ministries</h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 gap-8">
           {ministries.map((ministry) => (
             <div key={ministry.id} className="bg-white rounded-lg shadow-md overflow-hidden">
               <div className="p-6">

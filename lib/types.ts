@@ -35,6 +35,36 @@ export interface Sermon {
     imageUrl?: string;
   }
   
+  export interface Podcast {
+    _id: string;
+    title: string;
+    speaker: string;
+    series?: string;
+    date: string;
+    audioUrl: string;
+    description: string;
+    thumbnail: string;
+  }
+  
+  export interface Article {
+    _id: string;
+    title: string;
+    author: string;
+    publishedDate: string;
+    content: any[]; // Sanity Portable Text
+    slug: { current: string };
+    excerpt?: string;
+    mainImage?: string;
+  }
+  
+  export interface Event {
+    title: string;
+    description?: string;
+    date: string;
+    location?: string;
+    image?: string;
+  }
+  
   export interface ScheduleItem {
     id: string;
     title: string;

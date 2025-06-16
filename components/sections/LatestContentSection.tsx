@@ -4,17 +4,20 @@ import React, { useState, useRef, useEffect } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Image from 'next/image'
-import { sermons } from '@/lib/mocks'
+import { Sermon, Podcast, Article } from '@/lib/types'
 
 gsap.registerPlugin(ScrollTrigger)
 
 interface LatestContentSectionProps {
   id?: string
+  sermons: Sermon[]
+  podcasts: Podcast[]
+  articles: Article[]
 }
 
 const tabs = ['SERMONS', 'PODCASTS', 'ARTICLES']
 
-export default function LatestContentSection({ id }: LatestContentSectionProps) {
+export default function LatestContentSection({ id, sermons, podcasts, articles }: LatestContentSectionProps) {
   const [activeTab, setActiveTab] = useState(tabs[0])
   const sectionRef = useRef<HTMLElement>(null)
   const contentRef = useRef<HTMLDivElement>(null)
@@ -74,9 +77,57 @@ export default function LatestContentSection({ id }: LatestContentSectionProps) 
     //   case 'MUSIC':
     //     return <p>Content for Music goes here...</p>
       case 'PODCASTS':
-        return <p>Content for Podcasts goes here...</p>
+        return (
+          <div className="space-y-8">
+            {podcasts.map((podcast) => (
+              <div key={podcast._id} className="relative group cursor-pointer">
+                <div className="relative w-full h-[300px] sm:h-[400px] lg:h-[400px] overflow-hidden rounded-lg shadow-lg">
+                  <Image
+                    src={podcast.thumbnail || '/placeholder.jpg'}
+                    alt={podcast.title}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-black/40 flex flex-col justify-end p-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <p className="text-sm mb-1">{podcast.date} | {podcast.speaker}</p>
+                    <h3 className="text-3xl font-bold leading-tight">{podcast.title}</h3>
+                  </div>
+                </div>
+                <div className="mt-4">
+                  <p className="text-gray-600 text-sm">{podcast.date} | {podcast.speaker}</p>
+                  <h3 className="text-2xl font-bold mt-1 text-gray-900">{podcast.title}</h3>
+                </div>
+              </div>
+            ))}
+          </div>
+        )
       case 'ARTICLES':
-        return <p>Content for Articles goes here...</p>
+        return (
+          <div className="space-y-8">
+            {articles.map((article) => (
+              <div key={article._id} className="relative group cursor-pointer">
+                <div className="relative w-full h-[300px] sm:h-[400px] lg:h-[400px] overflow-hidden rounded-lg shadow-lg">
+                  <Image
+                    src={article.mainImage || '/placeholder.jpg'}
+                    alt={article.title}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-black/40 flex flex-col justify-end p-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <p className="text-sm mb-1">{article.publishedDate} | {article.author}</p>
+                    <h3 className="text-3xl font-bold leading-tight">{article.title}</h3>
+                  </div>
+                </div>
+                <div className="mt-4">
+                  <p className="text-gray-600 text-sm">{article.publishedDate} | {article.author}</p>
+                  <h3 className="text-2xl font-bold mt-1 text-gray-900">{article.title}</h3>
+                </div>
+              </div>
+            ))}
+          </div>
+        )
     //   case 'RESOURCES':
     //     return <p>Content for Resources goes here...</p>
       default:

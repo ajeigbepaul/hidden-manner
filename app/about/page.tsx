@@ -10,7 +10,7 @@ export default function AboutPage() {
           <div className="w-full lg:w-1/2">
             <div className="relative w-full h-[400px] lg:h-[600px]">
               <Image
-                src="/pastor.jpg"
+                src="/founder.jpg"
                 alt="Church Founder"
                 fill
                 className="object-cover rounded-2xl shadow-xl"

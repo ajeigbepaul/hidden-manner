@@ -25,8 +25,8 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900">Phone</h3>
-                    <p className="text-gray-600">+234 123 456 7890</p>
-                    <p className="text-gray-600">+234 987 654 3210</p>
+                    <p className="text-gray-600">+2348066307525</p>
+                    <p className="text-gray-600">+2347031372167</p>
                   </div>
                 </div>
 
@@ -36,8 +36,8 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900">Email</h3>
-                    <p className="text-gray-600">info@hiddenmanna.org</p>
-                    <p className="text-gray-600">prayer@hiddenmanna.org</p>
+                    <p className="text-gray-600">thehiddenmannaministries@gmail.com</p>
+                  
                   </div>
                 </div>
 
