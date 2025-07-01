@@ -1,8 +1,8 @@
 // schemaTypes/youtubeVideo.ts
 export default {
-  name: 'youtubeVideo',
+  name: 'youtubevideo',
   title: 'YouTube Video',
-  type: 'object',
+  type: 'document',
   fields: [
     {
       name: 'title',
@@ -19,9 +19,9 @@ export default {
     },
     {
       name: 'thumbnail',
-      title: 'Thumbnail URL',
-      type: 'url',
-       validation: (Rule: any) => Rule.required(),
+      title: 'Thumbnail',
+      type: 'image', // changed from 'url' to 'image'
+      validation: (Rule: any) => Rule.required(),
     },
     {
       name: 'date',
