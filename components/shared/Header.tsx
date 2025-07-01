@@ -2,10 +2,8 @@
 'use client' // Needed for interactivity
 
 import Link from 'next/link'
-import { Button } from '@/components/ui/button'
 import { useState } from 'react'
 import { FaBars, FaTimes } from 'react-icons/fa'
-import { Menu } from '../ui/Menu'
 import { usePathname } from 'next/navigation'
 
 export default function Header() {
@@ -43,7 +41,7 @@ export default function Header() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="text-2xl font-bold text-primary">
-           Hidden Minna Ministries
+           The Hidden Minna Ministries
           </Link>
 
           {/* Desktop Navigation */}

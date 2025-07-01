@@ -2,11 +2,10 @@
 "use client"
 import { CalendarDaysIcon } from 'lucide-react'
 import { FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa'
-import { Button } from '@/components/ui/button'
-import Link from 'next/link'
 import { EventItem } from '@/lib/types'
 import { useState } from 'react'
 import { ImagePreviewModal } from '@/components/ui/image-preview-modal'
+import { formatDate } from '@/lib/utils'
 
 interface ScheduleSectionProps {
   events: EventItem[]
@@ -61,11 +60,11 @@ export default function ScheduleSection({ events, id }: ScheduleSectionProps) {
             </h3>
             
             <div className="space-y-6">
-              {events.map(event => (
-                <div key={event.id} className="border-b border-gray-200 pb-6 last:border-0">
+              {events.map((event, idx) => (
+                <div key={idx} className="border-b border-gray-200 pb-6 last:border-0">
                   <div className="flex flex-col sm:flex-row gap-4">
                     <div className="w-full sm:w-24 flex-shrink-0">
-                      <p className="font-bold text-gray-900">{event.date}</p>
+                      <p className="font-bold text-gray-900">{formatDate(event.date)}</p>
                     </div>
                     <div className="flex-grow">
                       <h4 className="font-bold text-lg">{event.title}</h4>

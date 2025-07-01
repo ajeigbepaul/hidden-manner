@@ -1,26 +1,21 @@
 // src/components/sections/YouTubeVideosSection.tsx
 "use client"
-import { Ministry } from '@/lib/types';
+import { YouTubeVideo } from '@/lib/types';
 import { useRef, useState, useEffect } from 'react';
 import { FaChevronLeft, FaChevronRight, FaPlay } from 'react-icons/fa';
 
 interface YouTubeVideosSectionProps {
-  ministries: Ministry[];
-  id?: string;
+  youtubevideos: YouTubeVideo[];
+  
 }
 
-export default function YouTubeVideosSection({ ministries, id }: YouTubeVideosSectionProps) {
+export default function YouTubeVideosSection({ youtubevideos }: YouTubeVideosSectionProps) {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(true);
 
-  // Get all videos from all ministries
-  const allVideos = ministries.flatMap(ministry => 
-    ministry.youtubeVideos?.map(video => ({
-      ...video,
-      ministryName: ministry.name,
-    })) || []
-  );
+  // Use the youtubevideos array directly
+  const allVideos = youtubevideos;
 
   const checkScroll = () => {
     if (scrollContainerRef.current) {
@@ -55,7 +50,7 @@ export default function YouTubeVideosSection({ ministries, id }: YouTubeVideosSe
   };
 
   return (
-    <section id={id} className="py-12 bg-gradient-to-b from-gray-50 to-white">
+    <section className="py-12 bg-gradient-to-b from-gray-50 to-white">
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex items-center justify-between mb-8">
           <h2 className="text-3xl font-bold">Latest Messages</h2>
@@ -95,7 +90,7 @@ export default function YouTubeVideosSection({ ministries, id }: YouTubeVideosSe
           >
             {allVideos.map(video => (
               <div 
-                key={video.id} 
+                key={video.id || video.url} 
                 className="flex-none w-[350px] snap-center group"
               >
                 <div className="bg-white rounded-xl shadow-lg overflow-hidden transition-transform duration-300 hover:scale-[1.02]">
@@ -117,11 +112,6 @@ export default function YouTubeVideosSection({ ministries, id }: YouTubeVideosSe
                     />
                   </div>
                   <div className="p-6">
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className="px-2 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full">
-                        {video.ministryName}
-                      </span>
-                    </div>
                     <h3 className="font-bold text-lg mb-2 line-clamp-2">{video.title}</h3>
                     <button 
                       className="text-primary font-medium hover:text-primary-dark transition-colors"
@@ -136,11 +126,11 @@ export default function YouTubeVideosSection({ ministries, id }: YouTubeVideosSe
           </div>
         </div>
         
-        <div className="text-center mt-8">
+        {/* <div className="text-center mt-8">
           <button className="px-8 py-3 bg-primary text-white rounded-full hover:bg-primary-dark transition-all duration-300 shadow-lg hover:shadow-xl">
             View All Messages
           </button>
-        </div>
+        </div> */}
       </div>
     </section>
   );

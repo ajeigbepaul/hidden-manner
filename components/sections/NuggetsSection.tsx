@@ -27,14 +27,6 @@ const NuggetCard = memo(({ nugget }: { nugget: Nugget }) => (
 
       {/* Content */}
       <div className="relative p-6 h-full flex flex-col">
-        <div className="flex items-center gap-2 mb-4">
-          <time 
-            dateTime={nugget.date} 
-            className="px-2 py-1 text-xs font-medium bg-white/20 text-white rounded-full backdrop-blur-sm"
-          >
-            {nugget.date}
-          </time>
-        </div>
         <div className="relative">
           <FaQuoteLeft 
             className="absolute -top-2 -left-2 text-white/30 w-8 h-8" 
@@ -173,20 +165,11 @@ export default function NuggetsSection({ nuggets, id }: NuggetsSectionProps) {
             role="list"
             aria-label="Daily Nuggets"
           >
-            {nuggets.map(nugget => (
-              <NuggetCard key={nugget.id} nugget={nugget} />
+            {nuggets.map((nugget,idx) => (
+              <NuggetCard key={idx} nugget={nugget} />
             ))}
           </div>
         </div>
-{/*         
-        <div className="text-center mt-8">
-          <button 
-            className="px-8 py-3 bg-white/20 text-white rounded-full hover:bg-white/30 transition-all duration-300 shadow-lg hover:shadow-xl focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-indigo-900"
-            onClick={() => window.location.href = '/nuggets'}
-          >
-            View All Nuggets
-          </button>
-        </div> */}
       </div>
     </section>
   );

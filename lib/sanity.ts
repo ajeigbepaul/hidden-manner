@@ -26,7 +26,7 @@ export async function getHeroSection() {
         secondaryButton
       }`
     )
-    console.log('Raw Sanity Hero Data:', data)
+    // console.log('Raw Sanity Hero Data:', data)
     return data
   } catch (error) {
     console.error('Error fetching hero data:', error)
@@ -138,3 +138,19 @@ export async function getSchedule() {
     { next: { revalidate: 60 } }
   )
 } 
+
+// YouTube Videos Query
+// This query fetches YouTube videos from the ministry documents
+export async function getYouTubeVideos() {
+  return client.fetch(
+    `*[_type == "youtubeVideo"] | order(date desc){
+      _id,
+      title,
+      url,
+      thumbnail,
+      date
+    }`,
+    {},
+    { next: { revalidate: 60 } }
+  )
+}

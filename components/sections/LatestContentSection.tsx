@@ -5,6 +5,8 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Image from 'next/image'
 import { Sermon, Podcast, Article } from '@/lib/types'
+import { formatDate } from '@/lib/utils'
+import Link from 'next/link'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -15,9 +17,9 @@ interface LatestContentSectionProps {
   articles: Article[]
 }
 
-const tabs = ['SERMONS', 'PODCASTS', 'ARTICLES']
-
-export default function LatestContentSection({ id, sermons, podcasts, articles }: LatestContentSectionProps) {
+const tabs = ['SERMONS']
+// const tabs = ['SERMONS', 'VIDEOS', 'MUSIC', 'PODCASTS', 'ARTICLES', 'RESOURCES']
+export default function LatestContentSection({ id, sermons }: LatestContentSectionProps) {
   const [activeTab, setActiveTab] = useState(tabs[0])
   const sectionRef = useRef<HTMLElement>(null)
   const contentRef = useRef<HTMLDivElement>(null)
@@ -49,26 +51,26 @@ export default function LatestContentSection({ id, sermons, podcasts, articles }
       case 'SERMONS':
         return (
           <div className="space-y-8">
-            {sermons.map((sermon) => (
-              <div key={sermon.id} className="relative group cursor-pointer">
+            {sermons.map((sermon,idx) => (
+              <Link href={sermon.videoUrl} key={idx} className="relative group cursor-pointer">
                 <div className="relative w-full h-[300px] sm:h-[400px] lg:h-[400px] overflow-hidden rounded-lg shadow-lg">
                   <Image
-                    src={sermon.imageUrl || '/placeholder.jpg'}
+                    src={sermon.thumbnail} 
                     alt={sermon.title}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                   <div className="absolute inset-0 bg-black/40 flex flex-col justify-end p-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <p className="text-sm mb-1">{sermon.date} | {sermon.scripture}</p>
+                    <p className="text-sm mb-1">{formatDate(sermon.date)} | {sermon.scripture}</p>
                     <h3 className="text-3xl font-bold leading-tight">{sermon.title}</h3>
                   </div>
                 </div>
                 <div className="mt-4">
-                  <p className="text-gray-600 text-sm">{sermon.date} | {sermon.scripture}</p>
+                  <p className="text-gray-600 text-sm">{formatDate(sermon.date)} | {sermon.scripture}</p>
                   <h3 className="text-2xl font-bold mt-1 text-gray-900">{sermon.title}</h3>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         )
@@ -76,58 +78,58 @@ export default function LatestContentSection({ id, sermons, podcasts, articles }
     //     return <p>Content for Videos goes here...</p>
     //   case 'MUSIC':
     //     return <p>Content for Music goes here...</p>
-      case 'PODCASTS':
-        return (
-          <div className="space-y-8">
-            {podcasts.map((podcast) => (
-              <div key={podcast._id} className="relative group cursor-pointer">
-                <div className="relative w-full h-[300px] sm:h-[400px] lg:h-[400px] overflow-hidden rounded-lg shadow-lg">
-                  <Image
-                    src={podcast.thumbnail || '/placeholder.jpg'}
-                    alt={podcast.title}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  />
-                  <div className="absolute inset-0 bg-black/40 flex flex-col justify-end p-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <p className="text-sm mb-1">{podcast.date} | {podcast.speaker}</p>
-                    <h3 className="text-3xl font-bold leading-tight">{podcast.title}</h3>
-                  </div>
-                </div>
-                <div className="mt-4">
-                  <p className="text-gray-600 text-sm">{podcast.date} | {podcast.speaker}</p>
-                  <h3 className="text-2xl font-bold mt-1 text-gray-900">{podcast.title}</h3>
-                </div>
-              </div>
-            ))}
-          </div>
-        )
-      case 'ARTICLES':
-        return (
-          <div className="space-y-8">
-            {articles.map((article) => (
-              <div key={article._id} className="relative group cursor-pointer">
-                <div className="relative w-full h-[300px] sm:h-[400px] lg:h-[400px] overflow-hidden rounded-lg shadow-lg">
-                  <Image
-                    src={article.mainImage || '/placeholder.jpg'}
-                    alt={article.title}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  />
-                  <div className="absolute inset-0 bg-black/40 flex flex-col justify-end p-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <p className="text-sm mb-1">{article.publishedDate} | {article.author}</p>
-                    <h3 className="text-3xl font-bold leading-tight">{article.title}</h3>
-                  </div>
-                </div>
-                <div className="mt-4">
-                  <p className="text-gray-600 text-sm">{article.publishedDate} | {article.author}</p>
-                  <h3 className="text-2xl font-bold mt-1 text-gray-900">{article.title}</h3>
-                </div>
-              </div>
-            ))}
-          </div>
-        )
+      // case 'PODCASTS':
+      //   return (
+      //     <div className="space-y-8">
+      //       {podcasts.map((podcast) => (
+      //         <div key={podcast._id} className="relative group cursor-pointer">
+      //           <div className="relative w-full h-[300px] sm:h-[400px] lg:h-[400px] overflow-hidden rounded-lg shadow-lg">
+      //             <Image
+      //               src={podcast.thumbnail || '/placeholder.jpg'}
+      //               alt={podcast.title}
+      //               fill
+      //               className="object-cover transition-transform duration-500 group-hover:scale-105"
+      //               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+      //             />
+      //             <div className="absolute inset-0 bg-black/40 flex flex-col justify-end p-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+      //               <p className="text-sm mb-1">{podcast.date} | {podcast.speaker}</p>
+      //               <h3 className="text-3xl font-bold leading-tight">{podcast.title}</h3>
+      //             </div>
+      //           </div>
+      //           <div className="mt-4">
+      //             <p className="text-gray-600 text-sm">{podcast.date} | {podcast.speaker}</p>
+      //             <h3 className="text-2xl font-bold mt-1 text-gray-900">{podcast.title}</h3>
+      //           </div>
+      //         </div>
+      //       ))}
+      //     </div>
+      //   )
+      // case 'ARTICLES':
+      //   return (
+      //     <div className="space-y-8">
+      //       {articles.map((article) => (
+      //         <div key={article._id} className="relative group cursor-pointer">
+      //           <div className="relative w-full h-[300px] sm:h-[400px] lg:h-[400px] overflow-hidden rounded-lg shadow-lg">
+      //             <Image
+      //               src={article.mainImage || '/placeholder.jpg'}
+      //               alt={article.title}
+      //               fill
+      //               className="object-cover transition-transform duration-500 group-hover:scale-105"
+      //               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+      //             />
+      //             <div className="absolute inset-0 bg-black/40 flex flex-col justify-end p-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+      //               <p className="text-sm mb-1">{article.publishedDate} | {article.author}</p>
+      //               <h3 className="text-3xl font-bold leading-tight">{article.title}</h3>
+      //             </div>
+      //           </div>
+      //           <div className="mt-4">
+      //             <p className="text-gray-600 text-sm">{article.publishedDate} | {article.author}</p>
+      //             <h3 className="text-2xl font-bold mt-1 text-gray-900">{article.title}</h3>
+      //           </div>
+      //         </div>
+      //       ))}
+      //     </div>
+      //   )
     //   case 'RESOURCES':
     //     return <p>Content for Resources goes here...</p>
       default:

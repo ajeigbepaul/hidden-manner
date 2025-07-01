@@ -130,3 +130,11 @@ export interface EventItem {
   location?: string
   image?: string
 }
+
+export interface YouTubeVideo {
+  id?: string; // optional if not present in schema, or _id if using Sanity document
+  title: string;
+  url: string;
+  thumbnail: string;
+  date?: string; // optional if not always present
+}

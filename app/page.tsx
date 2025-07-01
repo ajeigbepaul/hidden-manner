@@ -7,13 +7,14 @@ import NuggetsSection from '@/components/sections/NuggetsSection'
 import ScheduleSection from '@/components/sections/ScheduleSection'
 import FullscreenGallery from '@/components/sections/FullscreenGallery'
 import LatestContentSection from '@/components/sections/LatestContentSection'
-import { getHeroSection, getSermons, getGallery, getNuggets, getSchedule, getPodcasts, getArticles } from '@/lib/sanity'
+import { getHeroSection, getSermons, getGallery, getNuggets, getSchedule, getPodcasts, getArticles,getYouTubeVideos } from '@/lib/sanity'
 import { Sermon } from '@/lib/types'
+import youtubevideo from '@/schemaTypes/youtubevideo'
 
 export const revalidate = 60 // Revalidate every 60 seconds
 
 export default async function Home() {
-  const [heroData, sermons, galleryData, nuggets, scheduleData, podcasts, articles] = await Promise.all([
+  const [heroData, sermons, galleryData, nuggets, scheduleData, podcasts, articles, youtubeVideos] = await Promise.all([
     getHeroSection(),
     getSermons(),
     getGallery(),
@@ -21,10 +22,12 @@ export default async function Home() {
     getSchedule(),
     getPodcasts(),
     getArticles(),
+    getYouTubeVideos()
   ])
 
-  console.log('Hero Data:', heroData)
-  console.log('Background Image URL:', heroData?.backgroundImage)
+  // console.log('Hero Data:', heroData)
+  // console.log('Background Image URL:', heroData?.backgroundImage)
+  // console.log("sermons:", sermons)
 
   const featuredSermon = sermons.find((sermon: Sermon) => sermon.isFeatured)
   
@@ -38,7 +41,7 @@ export default async function Home() {
       
       <LatestContentSection sermons={sermons} podcasts={podcasts} articles={articles} />
       
-      <YouTubeVideosSection ministries={[]} />
+      <YouTubeVideosSection youtubevideos={youtubeVideos} />
       
       <NuggetsSection nuggets={nuggets} />
       

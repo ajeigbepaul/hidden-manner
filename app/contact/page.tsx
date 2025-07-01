@@ -3,7 +3,7 @@ import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock } from 'react-icons/fa'
 export default function ContactPage() {
   return (
     <main className="min-h-screen bg-gray-50 py-16">
-      <div className="max-w-6xl mx-auto px-4">
+      <div className="max-w-xl mx-auto px-4">
         {/* Header Section */}
         <div className="text-center mb-16">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">Contact Us</h1>
@@ -12,10 +12,10 @@ export default function ContactPage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-1 gap-12">
           {/* Contact Information */}
           <div>
-            <div className="bg-white rounded-xl shadow-md p-8">
+            <div className="bg-white rounded-xl shadow-md p-2">
               <h2 className="text-2xl font-bold text-gray-900 mb-6">Get in Touch</h2>
               
               <div className="space-y-6">
@@ -30,13 +30,13 @@ export default function ContactPage() {
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4">
+                <div className="flex items-start gap-4 w-[100%]">
                   <div className="bg-primary/10 p-3 rounded-lg text-primary">
                     <FaEnvelope className="h-6 w-6" />
                   </div>
-                  <div>
+                  <div >
                     <h3 className="font-semibold text-gray-900">Email</h3>
-                    <p className="text-gray-600">thehiddenmannaministries@gmail.com</p>
+                    <p className="text-gray-600 break-all">thehiddenmannaministries@gmail.com</p>
                   
                   </div>
                 </div>
@@ -70,7 +70,7 @@ export default function ContactPage() {
           </div>
 
           {/* Contact Form */}
-          <div className="bg-white rounded-xl shadow-md p-8">
+          {/* <div className="bg-white rounded-xl shadow-md p-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-6">Send us a Message</h2>
             <form className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -158,7 +158,7 @@ export default function ContactPage() {
                 Send Message
               </button>
             </form>
-          </div>
+          </div> */}
         </div>
       </div>
     </main>
