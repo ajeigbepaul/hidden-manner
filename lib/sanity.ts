@@ -143,11 +143,11 @@ export async function getSchedule() {
 // This query fetches YouTube videos from the ministry documents
 export async function getYouTubeVideos() {
   return client.fetch(
-    `*[_type == "youtubeVideo"] | order(date desc){
+    `*[_type == "youtubevideo"] | order(date desc){
       _id,
       title,
       url,
-      thumbnail,
+      "thumbnail": thumbnail.asset->url,
       date
     }`,
     {},

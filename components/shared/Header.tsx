@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { FaBars, FaTimes } from 'react-icons/fa'
 import { usePathname } from 'next/navigation'
+// import Image from 'next/image'
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -26,6 +27,7 @@ export default function Header() {
 
   const 
   navLinks = [
+    { title: 'Home', href: '/' },
     { title: 'About', href: '/about' },
     // { title: 'Beliefs', href: '/beliefs' },
     // { title: 'Sermons', href: '/sermons' },
@@ -41,11 +43,11 @@ export default function Header() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="text-2xl font-bold text-primary">
-           The Hidden Minna Ministries
+            <img src="/churchlogo.jpg" alt="Hidden Manna" width={50} height={50} />
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-4">
             {navLinks.map((link) => (
               <Link
                 key={link.href}

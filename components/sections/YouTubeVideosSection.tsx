@@ -1,8 +1,16 @@
 // src/components/sections/YouTubeVideosSection.tsx
 "use client"
-import { YouTubeVideo } from '@/lib/types';
 import { useRef, useState, useEffect } from 'react';
 import { FaChevronLeft, FaChevronRight, FaPlay } from 'react-icons/fa';
+
+// Local type override to ensure _id is recognized
+type YouTubeVideo = {
+  _id?: string;
+  url: string;
+  title: string;
+  thumbnail: string;
+  date?: string;
+};
 
 interface YouTubeVideosSectionProps {
   youtubevideos: YouTubeVideo[];
@@ -13,10 +21,11 @@ export default function YouTubeVideosSection({ youtubevideos }: YouTubeVideosSec
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(true);
+  const [playingId, setPlayingId] = useState<string | null>(null);
 
   // Use the youtubevideos array directly
   const allVideos = youtubevideos;
-
+  console.log(allVideos,"ALL VIDEOS");
   const checkScroll = () => {
     if (scrollContainerRef.current) {
       const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
@@ -90,26 +99,35 @@ export default function YouTubeVideosSection({ youtubevideos }: YouTubeVideosSec
           >
             {allVideos.map(video => (
               <div 
-                key={video.id || video.url} 
+                key={video._id || video.url} 
                 className="flex-none w-[350px] snap-center group"
               >
                 <div className="bg-white rounded-xl shadow-lg overflow-hidden transition-transform duration-300 hover:scale-[1.02]">
                   <div className="relative pt-[56.25%] cursor-pointer">
-                    <img
-                      src={video.thumbnail}
-                      alt={video.title}
-                      className="absolute top-0 left-0 w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                      <FaPlay className="w-12 h-12 text-white" />
-                    </div>
-                    <iframe
-                      className="absolute top-0 left-0 w-full h-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                      src={`https://www.youtube.com/embed/${video.url.split('v=')[1]}?autoplay=1`}
-                      title={video.title}
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                    />
+                    {playingId === (video._id || video.url) ? (
+                      <iframe
+                        className="absolute top-0 left-0 w-full h-full"
+                        src={`https://www.youtube.com/embed/${video.url.split('v=')[1]}`}
+                        title={video.title}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      />
+                    ) : (
+                      <>
+                        <img
+                          src={video.thumbnail}
+                          alt={video.title}
+                          className="absolute top-0 left-0 w-full h-full object-cover"
+                        />
+                        <button
+                          className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-100 transition-opacity duration-300"
+                          onClick={() => setPlayingId(video._id || video.url)}
+                          aria-label={`Play ${video.title}`}
+                        >
+                          <FaPlay className="w-12 h-12 text-white" />
+                        </button>
+                      </>
+                    )}
                   </div>
                   <div className="p-6">
                     <h3 className="font-bold text-lg mb-2 line-clamp-2">{video.title}</h3>

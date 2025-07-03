@@ -8,14 +8,15 @@ export default function Footer() {
     <footer className="bg-gray-800 text-white py-12">
       <div className="max-w-6xl mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className='w-[50%]'>
+          <div className='w-fit'>
             <h3 className="text-xl font-bold mb-4">The Hidden Manna Ministries</h3>
             <p className="text-gray-300 text-md">
-              Bringing hope and transformation to our community through the Gospel.
+            We are commissioned by God to preach the gospel of Jesus Christ in Nigeria and all over the world
+
             </p>
           </div>
           
-          <div className='w-[25%]'>
+          <div className='w-fit'>
             <h4 className="font-bold mb-4">Quick Links</h4>
             <ul className="space-y-2">
               <li><Link href="/about" className="text-gray-300 hover:text-white">About Us</Link></li>
@@ -49,7 +50,7 @@ export default function Footer() {
         </div>
         
         <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-          <p>© {currentYear} The Hidden Manner Ministries. All rights reserved.</p>
+          <p>© {currentYear} The Hidden Manna Ministries. All rights reserved.</p>
         </div>
       </div>
     </footer>

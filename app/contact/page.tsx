@@ -48,9 +48,12 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-semibold text-gray-900">Address</h3>
                     <p className="text-gray-600">
-                      123 Church Street<br />
-                      Lagos, Nigeria<br />
-                      P.O. Box 12345
+                    Headquarter Address <br/>
+                    Manna Bible Church Street, <br/> 
+                    Behind Ilesa Garage, <br/>
+                    Oba (Sir) Adesoji Aderemi East Bypass,<br/>
+                    Osogbo, Osun State, Nigeria
+                     
                     </p>
                   </div>
                 </div>
@@ -61,8 +64,8 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900">Service Times</h3>
-                    <p className="text-gray-600">Sunday Services: 8:00 AM & 10:00 AM</p>
-                    <p className="text-gray-600">Wednesday Bible Study: 6:00 PM</p>
+                    <p className="text-gray-600">Sunday Services: 8:00 AM </p>
+                    <p className="text-gray-600">Tuesday Bible Study: 5:30 PM</p>
                   </div>
                 </div>
               </div>
