@@ -39,7 +39,7 @@ export default function ScheduleSection({ events, id }: ScheduleSectionProps) {
             <div className="mb-8">
               <h3 className="font-semibold text-lg mb-4">FOLLOW US</h3>
               <div className="flex space-x-4">
-                <a href="https://www.facebook.com/search/top?q=the%20hidden%20manna%20ministries" className="text-gray-700 hover:text-primary transition">
+                <a href="https://web.facebook.com/mannabiblechurch" className="text-gray-700 hover:text-primary transition">
                   <FaFacebook size={24} />
                 </a>
                 <a href="https://www.instagram.com/mannabiblechurch?igsh=anBqZjlrY2lxenIw" className="text-gray-700 hover:text-primary transition">

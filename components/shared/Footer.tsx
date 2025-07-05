@@ -39,7 +39,7 @@ export default function Footer() {
           <div className='w-fit'>
             <h4 className="font-bold mb-4">Connect</h4>
             <div className="flex space-x-4 mb-4">
-              <a href="https://www.facebook.com/search/top?q=the%20hidden%20manna%20ministries" target='_blank' className="text-gray-300 hover:text-white"><FaFacebook size={20} /></a>
+              <a href="https://web.facebook.com/mannabiblechurch" target='_blank' className="text-gray-300 hover:text-white"><FaFacebook size={20} /></a>
               <a href="https://www.instagram.com/mannabiblechurch?igsh=anBqZjlrY2lxenIw" target='_blank' className="text-gray-300 hover:text-white"><FaInstagram size={20} /></a>
               <a href="https://www.youtube.com/@thehiddenmannaministries" target='_blank' className="text-gray-300 hover:text-white"><FaYoutube size={20} /></a>
               <a href="https://x.com/manabiblechurch?t=VijUL7oE-d5-oECocKGAXw&s=08" target='_blank' className="text-gray-300 hover:text-white"><FaTwitter size={20} /></a>
